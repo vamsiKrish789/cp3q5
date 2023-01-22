@@ -3,10 +3,14 @@ const app = express();
 const addDays = require("date-fns/addDays");
 
 app.get("/", (request, response) => {
-  let newDate = addDays(new Date(2022, 1, 16), 100);
-  const date = `${newDate.getDate()}/${
-    newDate.getMonth() + 1
-  }/${newDate.getFullYear()}`;
+  let newDate = new Date();
+  let result = addDays(
+    new Date(newDate.getFullYear(), newDate.getMonth(), newDate.getDate()),
+    100
+  );
+  const date = `${result.getDate()}/${
+    result.getMonth() + 1
+  }/${result.getFullYear()}`;
   response.send(date);
 });
 
